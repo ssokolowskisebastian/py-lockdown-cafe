@@ -8,12 +8,12 @@ def go_to_cafe(cafe: Cafe, friends: list) -> str:
     for friend in friends:
         try:
             cafe.visit_cafe(friend)
-        except NotWearingMaskError as e:
+        except NotWearingMaskError:
             masks_to_buy += 1
-        except VaccineError as e:
+        except VaccineError:
             vaccine_error += 1
     if vaccine_error > 0:
-        return f"All friends should be vaccinated"
+        return "All friends should be vaccinated"
     if masks_to_buy > 0:
         return f"Friends should buy {masks_to_buy} masks"
     return f"Friends can go to {cafe.name}"
